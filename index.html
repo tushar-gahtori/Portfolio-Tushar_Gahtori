@@ -439,19 +439,13 @@
       margin-bottom: 8px;
     }
     
-    .project-desc p {
+     .project-desc p {
       font-size: 14px;
       color: var(--text-dim);
       line-height: 1.6;
       margin-bottom: 12px;
-      max-width: 650px;
-    }
-    
-    .project-desc p {
-      word-wrap: break-word;     
+      max-width: 100%;           
       overflow-wrap: break-word; 
-      word-break: normal;       
-      max-width: 100%;         
     }
 
     .project-card {
@@ -596,7 +590,7 @@
     /* ─── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 680px) {
       .about-grid { grid-template-columns: 1fr; }
-      .project-card { grid-template-columns: 1fr; }
+      .project-card { padding: 20px 16px; }
       .project-links { flex-direction: row; align-items: flex-start; }
       
       /* Updated Nav for mobile */
