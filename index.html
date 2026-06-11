@@ -584,11 +584,25 @@
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 680px) {
+@media (max-width: 680px) {
       .about-grid { grid-template-columns: 1fr; }
       .project-card { grid-template-columns: 1fr; }
       .project-links { flex-direction: row; align-items: flex-start; }
-      .nav-links { display: none; }
+      
+      /* Updated Nav for mobile */
+      .nav-inner { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 16px 24px; 
+        gap: 12px; 
+      }
+      .nav-links { 
+        display: flex; 
+        gap: 16px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+      }
+      
       .hero { padding: 64px 0 56px; }
       section { padding: 52px 0; }
     }
@@ -895,7 +909,7 @@
     <div class="container">
       <div class="reveal">
         <div class="section-label">Experience</div>
-        <div class="section-title">Where I've worked</div>
+        <div class="section-title">The path so far</div>
       </div>
       <div class="timeline reveal">
 
