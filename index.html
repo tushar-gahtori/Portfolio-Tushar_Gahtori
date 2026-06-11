@@ -618,20 +618,22 @@
       transform: translateY(0);
     }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+.runbox-step code {
+  word-break: break-all;
+  white-space: pre-wrap;
+  display: block;
 }
 
-.container, .project-card, .arch-block, .runbox {
-  width: 100%;
-  max-width: 100%;
+.project-card {
+  min-width: 0;
   box-sizing: border-box;
 }
 
-code {
-  word-break: break-all;
-  white-space: pre-wrap;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
   </style>
 </head>
