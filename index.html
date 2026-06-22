@@ -48,6 +48,7 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 0 24px;
+      box-sizing: border-box;
     }
 
     /* ─── NAV ────────────────────────────────────────────── */
@@ -330,6 +331,7 @@
     }
     .arch-service.kafka { border-color: rgba(251,191,36,0.3); color: var(--amber); background: rgba(251,191,36,0.06); }
     .arch-service.redis { border-color: rgba(79,142,247,0.3); color: var(--accent); background: var(--accent-dim); }
+    .arch-service.saml  { border-color: rgba(52,211,153,0.3); color: var(--green); background: rgba(52,211,153,0.06); }
     .arch-port { color: var(--text-dim); font-size: 10px; }
     .arch-arrow { color: var(--muted); font-size: 12px; }
 
@@ -369,18 +371,18 @@
       justify-content: center;
       flex-shrink: 0;
     }
-.runbox-step code {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  color: var(--text);
-  background: var(--surface); /* This is the background highlight */
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 2px 7px;
-  word-break: break-all;
-  white-space: pre-wrap;
-  display: inline-block; /* Ensure it respects padding/background */
-}
+    .runbox-step code {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2px 7px;
+      word-break: break-all;
+      white-space: pre-wrap;
+      display: block;
+    }
     .runbox-req {
       margin-top: 10px;
       font-family: var(--font-mono);
@@ -406,6 +408,8 @@
       transition: border-color var(--transition), transform var(--transition);
       position: relative;
       overflow: hidden;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .project-card::before {
       content: '';
@@ -434,6 +438,11 @@
       display: inline-block;
       margin-bottom: 10px;
     }
+    .project-badge.security {
+      background: rgba(52,211,153,0.08);
+      color: var(--green);
+      border: 1px solid rgba(52,211,153,0.2);
+    }
     .project-name {
       font-size: 18px;
       font-weight: 700;
@@ -441,18 +450,13 @@
       letter-spacing: -0.01em;
       margin-bottom: 8px;
     }
-    
-     .project-desc p {
+    .project-desc p {
       font-size: 14px;
       color: var(--text-dim);
       line-height: 1.6;
       margin-bottom: 12px;
-      max-width: 100%;           
-      overflow-wrap: break-word; 
-    }
-
-    .project-card {
-      min-width: 0;              
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
     .project-stack {
       display: flex;
@@ -579,39 +583,36 @@
     }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
-footer {
+    footer {
       border-top: 1px solid var(--border);
       padding: 24px;
-      text-align: center; /* This centers the text inside */
+      text-align: center;
       width: 100%;
     }
     footer p {
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--muted);
-      margin: 0; /* Ensures no default paragraph margins shift it */
+      margin: 0;
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────────── */
-@media (max-width: 680px) {
+    @media (max-width: 680px) {
       .about-grid { grid-template-columns: 1fr; }
       .project-card { padding: 20px 16px; }
       .project-links { flex-direction: row; align-items: flex-start; }
-      
-      /* Updated Nav for mobile */
-      .nav-inner { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 16px 24px; 
-        gap: 12px; 
+      .nav-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 24px;
+        gap: 12px;
       }
-      .nav-links { 
-        display: flex; 
-        gap: 16px; 
-        flex-wrap: wrap; 
-        justify-content: center; 
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-      
       .hero { padding: 64px 0 56px; }
       section { padding: 52px 0; }
     }
@@ -626,24 +627,6 @@ footer {
       opacity: 1;
       transform: translateY(0);
     }
-
-.runbox-step code {
-  word-break: break-all;
-  white-space: pre-wrap;
-  display: block;
-}
-
-.project-card {
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
-}
   </style>
 </head>
 <body>
@@ -743,6 +726,7 @@ footer {
             <span class="tag">Spring Security</span>
             <span class="tag">REST APIs</span>
             <span class="tag">JWT</span>
+            <span class="tag">SAML 2.0</span>
           </div>
         </div>
         <div class="skill-group">
@@ -769,6 +753,16 @@ footer {
             <span class="tag">AWS</span>
             <span class="tag">Azure</span>
             <span class="tag">Flyway</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Security &amp; Identity</div>
+          <div class="skill-tags">
+            <span class="tag">SAML 2.0</span>
+            <span class="tag">OAuth 2.0</span>
+            <span class="tag">Okta</span>
+            <span class="tag">PKI / TLS</span>
+            <span class="tag">SSO</span>
           </div>
         </div>
         <div class="skill-group">
@@ -803,11 +797,12 @@ footer {
       </div>
       <div class="projects-list">
 
+        <!-- ── PROJECT 1: SmartEcommerce ── -->
         <div class="project-card featured reveal">
           <div>
             <span class="project-badge">Featured</span>
             <div class="project-name">SmartEcommerce Platform</div>
-            
+
             <div class="project-desc">
               <p>
                 A production-grade e-commerce backend architected as a microservices ecosystem — distinct User, Product, Order, and Notification services orchestrated via Spring Cloud Eureka. A centralised API Gateway handles JWT authentication and request logging filters to securely route cross-service traffic. An event-driven architecture over Apache Kafka decouples services for reliable background processing of order confirmations, stock deductions, and email notifications. Redis caching in the Product Service, with Spring Boot Actuator, Prometheus, and Grafana for full-stack observability. React + TypeScript frontend with Context API for Auth and Cart state, Axios for REST integration. Entire infrastructure — MySQL, Kafka brokers, Zookeeper, Redis — containerised with Docker Compose for single-command deployment.
@@ -870,17 +865,97 @@ footer {
           </div>
         </div>
 
+        <!-- ── PROJECT 2: SAML SP (NEW) ── -->
+        <div class="project-card reveal">
+          <div>
+            <span class="project-badge security">Security</span>
+            <div class="project-name">Spring Boot SAML 2.0 SP — Okta Integration</div>
+
+            <div class="project-desc">
+              <p>
+                A production-oriented SAML 2.0 Service Provider integrated with Okta as the Identity Provider. Implements the full SSO lifecycle — signed AuthnRequests, SAMLResponse validation (signature, timestamps, audience, NameID), Okta group-to-Spring-role mapping, JPA-backed user persistence from assertion attributes, and SP-initiated and IdP-initiated Single Logout. Role-gated endpoints enforced at the method level via @PreAuthorize and in Thymeleaf templates via sec:authorize. Credentials managed through a PKCS12 keystore loaded at runtime using the Java KeyStore API — same keystore serves both HTTPS and SAML signing with no OpenSSL dependency. Custom Saml2AuthenticationException handler surfaces structured error codes with actionable fix suggestions per failure mode.
+              </p>
+            </div>
+
+            <div class="arch-block">
+              <div class="arch-title">SAML Flow</div>
+              <div class="arch-services">
+                <span class="arch-service">Browser</span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service">Spring Boot SP <span class="arch-port">:8443</span></span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service saml">Okta IdP</span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service">SAMLResponse POST</span>
+              </div>
+              <div class="arch-services" style="margin-top:6px;">
+                <span class="arch-service">Assertion validation</span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service">Groups → ROLE_*</span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service">H2 user persistence</span>
+                <span class="arch-arrow">→</span>
+                <span class="arch-service redis">SLO</span>
+              </div>
+            </div>
+
+            <div class="runbox">
+              <div class="runbox-label">Run it yourself</div>
+              <div class="runbox-steps">
+                <div class="runbox-step">
+                  <span class="step-num">1</span>
+                  <code>keytool -genkeypair -alias saml-sp -keyalg RSA -keysize 2048 -validity 365 -keystore src/main/resources/saml-keystore.p12 -storetype PKCS12 -storepass changeit -dname "CN=saml-sp,O=Example,C=US"</code>
+                </div>
+                <div class="runbox-step">
+                  <span class="step-num">2</span>
+                  Configure Okta SAML 2.0 app — set ACS URL to <code>https://localhost:8443/login/saml2/sso/okta</code>, download metadata XML into <code>src/main/resources/okta-metadata.xml</code>
+                </div>
+                <div class="runbox-step">
+                  <span class="step-num">3</span>
+                  <code>mvn spring-boot:run</code>
+                </div>
+                <div class="runbox-step">
+                  <span class="step-num">4</span>
+                  Hit <code>https://localhost:8443/dashboard</code> — accept self-signed cert — login with Okta
+                </div>
+              </div>
+              <div class="runbox-req">Requires: Java 17 · Maven · Okta Integrator Free account</div>
+            </div>
+
+            <div class="project-stack" style="margin-top: 18px;">
+              <span class="tag">Java 17</span>
+              <span class="tag">Spring Boot 2.7</span>
+              <span class="tag">Spring Security</span>
+              <span class="tag">SAML 2.0</span>
+              <span class="tag">OpenSAML 4</span>
+              <span class="tag">Okta</span>
+              <span class="tag">Spring Data JPA</span>
+              <span class="tag">Thymeleaf</span>
+              <span class="tag">H2</span>
+              <span class="tag">PKCS12</span>
+              <span class="tag">HTTPS</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/tushar-gahtori/saml-okta-demo" target="_blank" class="project-link">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- ── PROJECT 3: SQL Health Toolkit ── -->
         <div class="project-card reveal">
           <div>
             <span class="project-badge">Open Source</span>
             <div class="project-name">Enterprise SQL Server Health Toolkit</div>
-            
+
             <div class="project-desc">
               <p>
                 A production-hardened database maintenance suite with a Spring Boot REST API wrapper to automate health management of an enterprise device fleet database. T-SQL stored procedures use Dynamic Management Views (DMVs) for intelligent index maintenance — dynamically executing REBUILD or REORGANIZE based on fragmentation thresholds. Transaction-safe cursor-based batch cleanup prevents transaction log bloat with automatic pre-deletion backups. Automated diagnostic health reporting surfaces top wait statistics, stale statistics, database file sizes, and high-impact missing indexes. Centralised audit logging via MaintenanceAuditLog enforces traceability — capturing execution times, affected rows, system errors, and transaction statuses across all operations.
               </p>
             </div>
-            
+
             <div class="runbox">
               <div class="runbox-label">Run it yourself</div>
               <div class="runbox-steps">
@@ -1030,9 +1105,9 @@ footer {
           e.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }); 
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); 
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
 </body>
